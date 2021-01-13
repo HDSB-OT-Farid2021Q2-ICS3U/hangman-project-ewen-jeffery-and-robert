@@ -2,9 +2,10 @@ import turtle
 
 # s = turtle.getscreen()
 
-t = turtle.Turtle()
 
 def startDraw():
+  t = turtle.Turtle()
+
   '''
   Function to draw the gallows and start the game
   '''
@@ -39,7 +40,6 @@ def startDraw():
   t.hideturtle() # hides the arrow that is displayed on screen
 
   print("HANGMAN".center(40, "~"))
+  turtle.Screen().exitonclick()
 
-startDraw()
 
-turtle.Screen().exitonclick()
