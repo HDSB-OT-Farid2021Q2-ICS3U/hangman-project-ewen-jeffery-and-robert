@@ -9,6 +9,6 @@ Just clone the repo
 
 # Usage
 
-'''python
+```python
 guess = input('Guess a letter:\n')
-'''
+```
