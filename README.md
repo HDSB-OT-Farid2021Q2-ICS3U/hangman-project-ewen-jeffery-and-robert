@@ -3,11 +3,11 @@
 
 Our take on hangman involves a 1 and 2 player mode, where you can either guess a randomly generated word or have a friend think of one for you. We also have hints, a literal drawing and much, much more!
 
-# Installation
+## Installation
 
 Just clone the repo
 
-# Usage
+## Usage
 
 ```python
 guess = input('Guess a letter:\n')
