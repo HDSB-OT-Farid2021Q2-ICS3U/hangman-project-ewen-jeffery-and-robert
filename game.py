@@ -1,19 +1,22 @@
+
+#TODO combine all function files into the game file to be added to main.py
+
+from drawing import startDraw
+from random_word import RandWord
+from main import prtW
 import os
-clear = lambda: os.system('cls') # Clear Screen Function
+def clear(): os.system('cls' if os.name == 'nt' else 'clear')
 
-def prtW(wordToGuess,*CorrectLettersGuessed): # Display/Print Word Function
-    clear()
-    length = len(CorrectLettersGuessed) # Length of correct letters
-    for x in wordToGuess: # Loop through each letter of the chosen string
-        emptyspace = True # Set printing empty space as true in default
-        for y in range(1,length+1): # Check letters user has guessed
-            if x == CorrectLettersGuessed[y-1]:
-                emptyspace = False # Disable printing empty space
-                print(x,end=" ") # Print it and break loop
-                break
-        if emptyspace == True:
-            print("_",end=" ") # Print empty spaces
 
-# prtW("HelloWorld","e","o") Testing statement
+def main():
+    if input("Would you like a randomly generated word? [y/n]: ").lower() == "y":
+        word = RandWord()
+    else:
+        word = input("Please enter a word: ")
+    
+    startDraw(prtW(word))
+    guess = input("input a letter: ").lower
 
-#TODO:Add statistics to tell the user what letter has already been guessed
+
+
+main()
