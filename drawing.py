@@ -2,9 +2,11 @@ import turtle
 
 # s = turtle.getscreen()
 
-t = turtle.Turtle()
 
-def startDraw():
+def startDraw(word):
+  t = turtle.Turtle()#must be within function for game.py to work.
+  
+  turtle.getscreen()._root.attributes('-topmost', 1)
   '''
   Function to draw the gallows and start the game
   '''
@@ -37,16 +39,18 @@ def startDraw():
   t.right(90)
   t.forward(50)
   t.hideturtle() # hides the arrow that is displayed on screen
+  t.penup()
+  t.goto(0,-200)
+  t.write(word,move = False, align = 'center',font = ("Verdana",24,"normal"))
 
   print("HANGMAN".center(40, "~"))
-<<<<<<< Updated upstream
 
-startDraw()
+
 
 turtle.Screen().exitonclick()
-=======
-  turtle.Screen().exitonclick()
-  
+
 if __name__ == "__main__":
   startDraw()
->>>>>>> Stashed changes
+
+
+
