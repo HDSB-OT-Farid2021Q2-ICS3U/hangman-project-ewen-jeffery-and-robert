@@ -39,7 +39,14 @@ def startDraw():
   t.hideturtle() # hides the arrow that is displayed on screen
 
   print("HANGMAN".center(40, "~"))
+<<<<<<< Updated upstream
 
 startDraw()
 
 turtle.Screen().exitonclick()
+=======
+  turtle.Screen().exitonclick()
+  
+if __name__ == "__main__":
+  startDraw()
+>>>>>>> Stashed changes
