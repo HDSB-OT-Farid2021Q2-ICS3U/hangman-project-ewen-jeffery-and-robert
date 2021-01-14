@@ -44,9 +44,14 @@ def startDraw(word):
   t.write(word, move = False, align = 'center', font = ("Verdana", 24, "normal"))
 
   print("HANGMAN".center(40, "~"))
-  turtle.Screen().exitonclick()
+
+
+
+turtle.Screen().exitonclick()
 
 if __name__ == "__main__":
   startDraw()
 
-  # TODO: Draw body whenever a certain condition is met (each time user guesses wrong)
+# TODO: Draw body whenever a certain condition is met (each time user guesses wrong)
+
+
