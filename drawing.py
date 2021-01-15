@@ -94,5 +94,5 @@ def drawParts(t, wrong):
 if __name__ == "__main__":
   startDraw("Haha")
 
-# TODO: Draw body part whenever a certain condition is met (each time user guesses wrong)
-# Legs and arms left
+# TODO: Draw body part whenever a certain condition is met (each time user guesses wrong) DONE
+# TODO: Draw word in turtle! Also integrate this into main
