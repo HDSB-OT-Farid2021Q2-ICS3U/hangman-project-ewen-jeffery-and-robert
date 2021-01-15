@@ -44,30 +44,55 @@ def startDraw(word):
 
   print("HANGMAN".center(40, "~"))
 
-  drawParts(t, wrong)
-  wrong += 1
-  drawParts(t, wrong)
+  for i in range(6):
+    drawParts(t, wrong)
+    wrong += 1
+
 
   turtle.Screen().exitonclick()
 
 def drawParts(t, wrong):
   ''' Draw body parts after each individual wrong answer '''
-  if wrong == 1:
+  if wrong == 1:  # head
     t.setx(-51)
     t.sety(175)
     t.pencolor("blue")
     t.speed(10)
     t.pendown()
     t.circle(25)
-  elif wrong == 2:
+  elif wrong == 2:  # chest
     t.penup()
     t.setx(-26)
     t.sety(150)
     t.pendown()
     t.forward(100)
+  elif wrong == 3:  # left leg
+    t.right(45)
+    t.forward(50)
+  elif wrong == 4:  # right leg
+    t.penup()
+    t.right(180)
+    t.forward(50)
+    t.pendown()
+    t.right(90)
+    t.forward(50)
+  elif wrong == 5:  # left arm
+    t.penup()
+    t.setx(-26)
+    t.sety(100)
+    t.left(90)
+    t.pendown()
+    t.forward(50)
+  elif wrong == 6:  # right arm (body complete)
+    t.penup()
+    t.setx(-26)
+    t.sety(100)
+    t.left(90)
+    t.pendown()
+    t.forward(50)
 
 if __name__ == "__main__":
   startDraw("Haha")
 
-# TODO: Draw body part whenever a certain condition is met (each time user guesses wrong)
-# Legs and arms left
+# TODO: Draw body part whenever a certain condition is met (each time user guesses wrong) DONE
+# TODO: Draw word in turtle! Also integrate this into main
