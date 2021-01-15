@@ -2,9 +2,10 @@ import turtle
 
 # s = turtle.getscreen()
 
+wrong = 1
 
 def startDraw(word):
-  t = turtle.Turtle() # must be within function for game.py to work.
+  t = turtle.Turtle() # must be within function for game.py to work
   
   t.getscreen()._root.attributes('-topmost', 1)
   '''
@@ -45,13 +46,18 @@ def startDraw(word):
 
   print("HANGMAN".center(40, "~"))
 
-
-
-turtle.Screen().exitonclick()
+  turtle.Screen().exitonclick()
 
 if __name__ == "__main__":
-  startDraw()
+  startDraw("Haha")
+  drawParts()
 
 # TODO: Draw body whenever a certain condition is met (each time user guesses wrong)
 
+def drawParts():
+  t = turtle.Turtle() # must be within function for game.py to work.
 
+  if wrong == 1:
+    t.pendown()
+    t.circle(20)
+    t.hideturtle
