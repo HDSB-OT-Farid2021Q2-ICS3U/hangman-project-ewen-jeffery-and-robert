@@ -44,10 +44,9 @@ def startDraw(word):
 
   print("HANGMAN".center(40, "~"))
 
-  for i in range(6):
+  for i in range(6):  # just to test the body draw
     drawParts(t, wrong)
     wrong += 1
-
 
   turtle.Screen().exitonclick()
 
@@ -92,7 +91,7 @@ def drawParts(t, wrong):
     t.forward(50)
 
 if __name__ == "__main__":
-  startDraw("Haha")
+  startDraw("Haha")  # temp argument for sake of testing
 
 # TODO: Draw body part whenever a certain condition is met (each time user guesses wrong) DONE
-# TODO: Draw word in turtle! Also integrate this into main
+# TODO: Draw word in turtle! Also integrate this into main where @Jeffery is working
