@@ -2,16 +2,15 @@ import turtle
 
 # s = turtle.getscreen()
 
-wrong = 1
-
 def startDraw(word):
+  ''' Function to draw the gallows and start the game '''
+  wrong = 1
+
   t = turtle.Turtle() # must be within function for game.py to work
   
   t.getscreen()._root.attributes('-topmost', 1)
-  '''
-  Function to draw the gallows and start the game
-  '''
-  t.hideturtle()
+  t.hideturtle() # hides the arrow that is displayed on screen
+  t.speed(50)
   t.penup()
   t.left(90)
   t.forward(250)
@@ -24,7 +23,6 @@ def startDraw(word):
   t.forward(250)
   t.right(180)
   t.pendown()
-  t.speed(50)
   t.forward(150)
   t.right(180)
   t.forward(75)
@@ -40,30 +38,36 @@ def startDraw(word):
   t.forward(150)
   t.right(90)
   t.forward(50)
-  t.hideturtle() # hides the arrow that is displayed on screen
   t.penup()
   t.goto(0,-200)
   t.write(word, move = False, align = 'center', font = ("Verdana", 24, "normal"))
 
   print("HANGMAN".center(40, "~"))
 
-<<<<<<< HEAD
-=======
+  drawParts(t, wrong)
+  wrong += 1
+  drawParts(t, wrong)
 
-
->>>>>>> b6791dc8d6eefab91849f9ff5a9647e4ba6bb113
   turtle.Screen().exitonclick()
+
+def drawParts(t, wrong):
+  ''' Draw body parts after each individual wrong answer '''
+  if wrong == 1:
+    t.setx(-51)
+    t.sety(175)
+    t.pencolor("blue")
+    t.speed(10)
+    t.pendown()
+    t.circle(25)
+  elif wrong == 2:
+    t.penup()
+    t.setx(-26)
+    t.sety(150)
+    t.pendown()
+    t.forward(100)
 
 if __name__ == "__main__":
   startDraw("Haha")
-  drawParts()
 
-# TODO: Draw body whenever a certain condition is met (each time user guesses wrong)
-
-def drawParts():
-  t = turtle.Turtle() # must be within function for game.py to work.
-
-  if wrong == 1:
-    t.pendown()
-    t.circle(20)
-    t.hideturtle
+# TODO: Draw body part whenever a certain condition is met (each time user guesses wrong)
+# Legs and arms left
