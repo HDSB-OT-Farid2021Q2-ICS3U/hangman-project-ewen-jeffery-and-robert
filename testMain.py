@@ -1,6 +1,9 @@
 import os
 import random
 from random_word import RandWord
+import time
+
+start = time.time()
 def clear(): os.system('cls' if os.name == 'nt' else 'clear')
 userLetterList = []
 printList = []
@@ -30,10 +33,13 @@ def prtList():
         print(o,end=" ")
     print("")
 guessingWord = RandWord()
-done = True
+done = True 
 while True:
     gLetter = input("Enter a letter: ")
-    isLetterInGuessWord(gLetter,guessingWord)
+    if len(gLetter) == 1 and gLetter.isdigit == False:
+        isLetterInGuessWord(gLetter,guessingWord)
+    else:
+        continue
     makePrtList()
     prtList()
     gameover()
