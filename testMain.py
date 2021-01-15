@@ -7,7 +7,7 @@ start = time.time()
 def clear(): os.system('cls' if os.name == 'nt' else 'clear')
 userLetterList = []
 printList = []
-chance = 5
+chance = 6
 def isLetterInGuessWord(guessLetter,guessWord):
     if guessLetter in guessWord:
         if gLetter in userLetterList:
@@ -45,6 +45,7 @@ while True:
     gLetter = input("Enter a letter: ")
     if gLetter not in guessingWord:
         chance = chance - 1
+        print(f"You have {chance} chances left")
     if chance == 0:
         print("Lose")
         exit()
