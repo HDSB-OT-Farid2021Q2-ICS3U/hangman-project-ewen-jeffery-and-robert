@@ -10,6 +10,7 @@ def startDraw(word):
   '''
   Function to draw the gallows and start the game
   '''
+  t.hideturtle()
   t.penup()
   t.left(90)
   t.forward(250)
@@ -47,7 +48,7 @@ def startDraw(word):
 
 
 
-turtle.Screen().exitonclick()
+  turtle.Screen().exitonclick()
 
 if __name__ == "__main__":
   startDraw()
