@@ -1,14 +1,10 @@
 import os
 import random
 from random_word import RandWord
-<<<<<<< HEAD
-clear = lambda: os.system('cls') # Clear Screen Function
-=======
 import time
 
 start = time.time()
 def clear(): os.system('cls' if os.name == 'nt' else 'clear')
->>>>>>> c9917ab9e3158c36e5b39a8b0179257abd876345
 userLetterList = []
 printList = []
 chance = 5
@@ -37,13 +33,12 @@ def prtList():
     for o in printList:       
         print(o,end=" ")
     print("")
-<<<<<<< HEAD
 clear()
 gametype = input("Do you want to start with a random word or input a word?(R/I)")
 if gametype == "R" or gametype == "r":
     guessingWord = RandWord()
 else:
-    guessingWord = input("Enter the word to be guessed")
+    guessingWord = input("Enter the word to be guessed\n")
 done = True
 clear()
 while True:
@@ -60,16 +55,3 @@ while True:
     clear()
     prtList()
     gameover()
-=======
-guessingWord = RandWord()
-done = True 
-while True:
-    gLetter = input("Enter a letter: ")
-    if len(gLetter) == 1 and gLetter.isdigit == False:
-        isLetterInGuessWord(gLetter,guessingWord)
-    else:
-        continue
-    makePrtList()
-    prtList()
-    gameover()
->>>>>>> c9917ab9e3158c36e5b39a8b0179257abd876345
