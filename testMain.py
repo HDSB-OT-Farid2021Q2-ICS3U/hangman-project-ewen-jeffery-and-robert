@@ -1,6 +1,7 @@
 import os
 import random
-
+from random_word import RandWord
+def clear(): os.system('cls' if os.name == 'nt' else 'clear')
 userLetterList = []
 printList = []
 def isLetterInGuessWord(guessLetter,guessWord):
@@ -28,9 +29,7 @@ def prtList():
     for o in printList:       
         print(o,end=" ")
     print("")
-wordList = ["about","hello","understand","important","opposite","he","crescendo"]
-randNum = random.randrange(0,len(wordList))
-guessingWord = wordList[randNum]
+guessingWord = RandWord()
 done = True
 while True:
     gLetter = input("Enter a letter: ")
