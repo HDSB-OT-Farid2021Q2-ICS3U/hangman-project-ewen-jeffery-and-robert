@@ -48,6 +48,9 @@ for j in range(0,len(guessingWord)):
 print("")
 while True:
     gLetter = input("Enter a letter: ")
+    if len(gLetter)>=2:
+        print("Invalid Input")
+        continue
     isLetterInGuessWord(gLetter,guessingWord)
     if gLetter not in guessingWord and gLetter not in wrongList:
         chance = chance - 1
@@ -62,4 +65,4 @@ while True:
     makePrtList()
     prtList()
     gameover()
-#TODO: Chance will not be used when the wrong letters were guessed more than one time
+#TODO: Print invalid input when more than one letter entered
