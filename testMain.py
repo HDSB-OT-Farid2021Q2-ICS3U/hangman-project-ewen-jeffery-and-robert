@@ -16,8 +16,6 @@ def isLetterInGuessWord(guessLetter,guessWord):
             print("It is already guessed")
         else:
             userLetterList.append(gLetter)
-    else:
-        wrongList.append(guessLetter)
 def makePrtList():
     printList.clear()
     for x in guessingWord:
@@ -51,9 +49,10 @@ print("")
 while True:
     gLetter = input("Enter a letter: ")
     isLetterInGuessWord(gLetter,guessingWord)
-    if gLetter not in guessingWord:
+    if gLetter not in guessingWord and gLetter not in wrongList:
         chance = chance - 1
         print(f"You have {chance} chances left")
+        wrongList.append(gLetter)
     elif gLetter in wrongList:
         print("It is already guessed")
     if chance == 0:
