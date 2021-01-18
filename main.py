@@ -48,6 +48,16 @@ def prtList():
         print(o, end=" ")
     print("")
 
+def hint():
+    if hints.lower() == "y":
+        hint = []
+        for i in guessingWord:
+            if i not in printList:
+                hint.append(i)
+        chance = random.randrange(4)
+        if chance == 1:
+            print(f"Here's a hint, try: {hint[random.randrange(len(hint))]}")
+
 clear()
 gametype = input("Do you want to start with a random word or input a word?(R/I): ")
 if gametype.lower()== "r":
@@ -55,6 +65,8 @@ if gametype.lower()== "r":
 else:
     guessingWord = input("Enter the word to be guessed:\n")
 done = True
+clear()
+hints = input("Would you like hints? (Y/N): ")
 clear()
 
 for j in range(0, len(guessingWord)):
@@ -86,6 +98,7 @@ while True:
     prtList()
     word = ' '.join(printList)
     gameover()
+    hint()
     drawing.clear()
 # TODO: Print invalid input when more than one letter entered
 # TODO: Integrate drawing (ALMOST DONE?) @Robert's job
