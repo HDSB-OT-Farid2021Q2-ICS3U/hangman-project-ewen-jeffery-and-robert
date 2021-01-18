@@ -77,5 +77,9 @@ while True:
     makePrtList()
     prtList()
     gameover()
+<<<<<<< HEAD
 # TODO: Print invalid input when more than one letter entered
 # TODO: Integrate drawing (ALMOST DONE?) @Robert's job
+=======
+#TODO: Print invalid input when more than one letter entered(Fixed)
+>>>>>>> a1500fb198dd8e72e14075e9d066992a7de682ec
