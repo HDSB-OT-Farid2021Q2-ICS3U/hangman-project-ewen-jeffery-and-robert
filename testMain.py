@@ -2,12 +2,14 @@ import os
 import random
 from random_word import RandWord
 import time
+from drawing import drawParts
 
 start = time.time()
 def clear(): os.system('cls' if os.name == 'nt' else 'clear')
 userLetterList = []
 printList = []
-chance = 5
+wrongList = []
+chance = 6
 def isLetterInGuessWord(guessLetter,guessWord):
     if guessLetter in guessWord:
         if gLetter in userLetterList:
@@ -41,17 +43,26 @@ else:
     guessingWord = input("Enter the word to be guessed\n")
 done = True
 clear()
+for j in range(0,len(guessingWord)):
+    print("_ ",end="")
+print("")
 while True:
     gLetter = input("Enter a letter: ")
-    if gLetter not in guessingWord:
+    if len(gLetter)>=2:
+        print("Invalid Input")
+        continue
+    isLetterInGuessWord(gLetter,guessingWord)
+    if gLetter not in guessingWord and gLetter not in wrongList:
         chance = chance - 1
+        print(f"You have {chance} chances left")
+        wrongList.append(gLetter)
+    elif gLetter in wrongList:
+        print("It is already guessed")
     if chance == 0:
         print("Lose")
+        print(f"The word is {guessingWord}")
         exit()
-    isLetterInGuessWord(gLetter,guessingWord,)
     makePrtList()
     prtList()
-    input("")
-    clear()
-    prtList()
     gameover()
+#TODO: Print invalid input when more than one letter entered
