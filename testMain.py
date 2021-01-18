@@ -1,8 +1,13 @@
 import os
 import random
 from random_word import RandWord
+<<<<<<< HEAD
 
 from drawing import drawParts
+=======
+import time
+import drawing
+>>>>>>> daaae39ba886087a6e86c7bf4c8a673fd8c1a0ac
 
 
 def clear(): os.system('cls' if os.name == 'nt' else 'clear')
@@ -10,12 +15,14 @@ userLetterList = []
 printList = []
 wrongList = []
 chance = 6
-def isLetterInGuessWord(guessLetter,guessWord):
+
+def isLetterInGuessWord(guessLetter, guessWord):
     if guessLetter in guessWord:
         if gLetter in userLetterList:
             print("It is already guessed")
         else:
             userLetterList.append(gLetter)
+
 def makePrtList():
     printList.clear()
     for x in guessingWord:
@@ -23,6 +30,7 @@ def makePrtList():
             printList.append(x)
         else:
             printList.append("_")
+
 def gameover():
     done = True
     for a in guessingWord:
@@ -31,9 +39,10 @@ def gameover():
     if done == True:
         print(f"You guessed the word ({guessingWord}), game is over")
         exit()
+
 def prtList():
     for o in printList:       
-        print(o,end=" ")
+        print(o, end=" ")
     print("")
 clear()
 gametype = input("Do you want to start with a random word or input a word?(R/I)")
@@ -43,19 +52,22 @@ else:
     guessingWord = input("Enter the word to be guessed\n")
 done = True
 clear()
-for j in range(0,len(guessingWord)):
-    print("_ ",end="")
+for j in range(0, len(guessingWord)):
+    print("_ ", end="")
 print("")
+
 while True:
+    drawing.startDraw(guessingWord)
     gLetter = input("Enter a letter: ")
     if len(gLetter)>=2:
         print("Invalid Input")
         continue
-    isLetterInGuessWord(gLetter,guessingWord)
+    isLetterInGuessWord(gLetter, guessingWord)
     if gLetter not in guessingWord and gLetter not in wrongList:
-        chance = chance - 1
+        chance -= 1
         print(f"You have {chance} chances left")
         wrongList.append(gLetter)
+        drawing.drawParts(chance, t)
     elif gLetter in wrongList:
         print("It is already guessed")
     if chance == 0:
