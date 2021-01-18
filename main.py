@@ -51,9 +51,7 @@ def prtList():
 def hint():
     if hints.lower() == "y":
         hint = []
-        for i in guessingWord:
-            if i not in printList:
-                hint.append(i)
+        hint = [i for i in guessingWord if i not in printList]
         chance = random.randrange(4)
         if chance == 1:
             print(f"Here's a hint, try: {hint[random.randrange(len(hint))]}")
@@ -100,6 +98,7 @@ while True:
     gameover()
     hint()
     drawing.clear()
+    
 # TODO: Print invalid input when more than one letter entered
 # TODO: Integrate drawing (ALMOST DONE?) @Robert's job
 # TODO: Give option to replay screen (@Robert has started in gameOver function)
