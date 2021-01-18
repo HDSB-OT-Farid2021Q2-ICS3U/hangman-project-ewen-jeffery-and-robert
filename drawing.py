@@ -9,6 +9,8 @@ def startDraw(word):
   t = turtle.Turtle() # must be within function for game.py to work
   
   t.getscreen()._root.attributes('-topmost', 1)
+  screen = t.getscreen()
+  screen.bgcolor("pink")
   t.hideturtle() # hides the arrow that is displayed on screen
   t.speed(50)
   t.penup()
@@ -43,14 +45,11 @@ def startDraw(word):
   t.pencolor("green")
   t.write(word, move = False, align = 'center', font = ("Verdana", 24, "normal"))
 
-  '''for i in range(6):  # just to test the body draw
-    drawParts(t, wrong)
-    wrong -= 1'''
-
   # turtle.Screen().exitonclick()
 
 def drawParts(t, wrong):
   ''' Draw body parts after each individual wrong answer '''
+  screen = t.getscreen()
   if wrong == 5:  # head
     t.setx(-51)
     t.sety(175)
@@ -97,8 +96,9 @@ def drawParts(t, wrong):
     t.right(135)
     t.pendown()
     t.forward(50)
+    t.penup()
 
-    turtle.Screen().exitonclick()
+    screen.delay(200)
 
 if __name__ == "__main__":  # @Ewen what does this do?  -- when importing a package the code will run. this is to stop it until the function is called like drawing.start() 
   startDraw("hey")  # temp argument for sake of testing

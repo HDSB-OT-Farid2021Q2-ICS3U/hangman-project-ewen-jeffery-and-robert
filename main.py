@@ -13,7 +13,7 @@ chance = 6
 
 def isLetterInGuessWord(guessLetter, guessWord):
     if guessLetter in guessWord:
-        if gLetter in userLetterList:
+        if guessLetter in userLetterList:
             print("It is already guessed")
         else:
             userLetterList.append(gLetter)
@@ -23,10 +23,8 @@ def makePrtList():
     for x in guessingWord:
         if x in userLetterList:
             printList.append(x)
-            word = printList
         else:
             printList.append("_")
-            word = printList
 
 def gameover():
     done = True
@@ -42,7 +40,7 @@ def prtList():
         print(o, end=" ")
     print("")
 clear()
-gametype = input("Do you want to start with a random word or input a word?(R/I) ")
+gametype = input("Do you want to start with a random word or input a word?(R/I): ")
 if gametype.lower()== "r":
     guessingWord = RandWord()
 else:
@@ -71,11 +69,13 @@ while True:
         print("It is already guessed")
     if chance == 0:
         drawing.drawParts(drawing.t ,chance)
+        clear()
         print("Lose")
         print(f"The word is {guessingWord}")
         exit()
     makePrtList()
     prtList()
+    word = ' '.join(printList)
     gameover()
 # TODO: Print invalid input when more than one letter entered
 # TODO: Integrate drawing (ALMOST DONE?) @Robert's job
