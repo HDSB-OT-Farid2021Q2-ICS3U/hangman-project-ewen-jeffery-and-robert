@@ -4,8 +4,8 @@ import turtle
 
 def startDraw(word):
   ''' Function to draw the gallows and start the game '''
-  wrong = 6
 
+  global t
   t = turtle.Turtle() # must be within function for game.py to work
   
   t.getscreen()._root.attributes('-topmost', 1)
@@ -40,15 +40,14 @@ def startDraw(word):
   t.forward(50)
   t.penup()
   t.goto(0,-200)
+  t.pencolor("green")
   t.write(word, move = False, align = 'center', font = ("Verdana", 24, "normal"))
 
-  print("HANGMAN".center(40, "~"))
-
-  for i in range(6):  # just to test the body draw
+  '''for i in range(6):  # just to test the body draw
     drawParts(t, wrong)
-    wrong -= 1
+    wrong -= 1'''
 
-  turtle.Screen().exitonclick()
+  # turtle.Screen().exitonclick()
 
 def drawParts(t, wrong):
   ''' Draw body parts after each individual wrong answer '''
@@ -61,37 +60,48 @@ def drawParts(t, wrong):
     t.circle(25)
   elif wrong == 4:  # chest
     t.penup()
+    t.pencolor("blue")
     t.setx(-26)
     t.sety(150)
     t.pendown()
     t.forward(100)
   elif wrong == 3:  # left leg
+    t.pencolor("blue")
+    t.setx(-26)
+    t.sety(50)
+    t.pendown()
     t.right(45)
     t.forward(50)
   elif wrong == 2:  # right leg
-    t.penup()
-    t.right(180)
-    t.forward(50)
+    t.pencolor("blue")
+    t.setx(-26)
+    t.sety(50)
+    t.setx(-26)
+    t.sety(50)
     t.pendown()
-    t.right(90)
+    t.left(45)
     t.forward(50)
   elif wrong == 1:  # left arm
+    t.pencolor("blue")
     t.penup()
     t.setx(-26)
     t.sety(100)
-    t.left(90)
+    t.left(135)
     t.pendown()
     t.forward(50)
   elif wrong == 0:  # right arm (body complete)
+    t.pencolor("blue")
     t.penup()
     t.setx(-26)
     t.sety(100)
-    t.left(90)
+    t.right(135)
     t.pendown()
     t.forward(50)
 
+    turtle.Screen().exitonclick()
+
 if __name__ == "__main__":  # @Ewen what does this do?  -- when importing a package the code will run. this is to stop it until the function is called like drawing.start() 
-  startDraw()  # temp argument for sake of testing
-  drawParts()
+  startDraw("hey")  # temp argument for sake of testing
+  # drawParts()
 # TODO: Draw body part whenever a certain condition is met (each time user guesses wrong) DONE
 # TODO: Draw word in turtle! Also integrate this into main where @Jeffery is working
