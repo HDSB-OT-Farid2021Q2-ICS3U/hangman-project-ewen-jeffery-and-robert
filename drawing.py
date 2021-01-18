@@ -90,8 +90,8 @@ def drawParts(t, wrong):
     t.pendown()
     t.forward(50)
 
-if __name__ == "__main__":  # @Ewen what does this do?
-  startDraw("Haha")  # temp argument for sake of testing
-
+if __name__ == "__main__":  # @Ewen what does this do?  -- when importing a package the code will run. this is to stop it until the function is called like drawing.start() 
+  startDraw()  # temp argument for sake of testing
+  drawParts()
 # TODO: Draw body part whenever a certain condition is met (each time user guesses wrong) DONE
 # TODO: Draw word in turtle! Also integrate this into main where @Jeffery is working
