@@ -77,4 +77,4 @@ while True:
     makePrtList()
     prtList()
     gameover()
-#TODO: Print invalid input when more than one letter entered
+#TODO: Print invalid input when more than one letter entered(Fixed)
