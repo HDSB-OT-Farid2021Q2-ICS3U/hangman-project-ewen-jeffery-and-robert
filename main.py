@@ -32,13 +32,22 @@ def gameover():
         if a not in printList:
             done = False
     if done == True:
+        drawing.clear()
+        drawing.startDraw(word)
         print(f"You guessed the word ({guessingWord}), game is over")
-        exit()
+        newgame = input("Would you like to play again? (Y/N): ")
+        if newgame.lower() == "y":
+            drawing.t.clear()
+            clear()
+            drawing.startDraw("")
+        else:
+            exit()
 
 def prtList():
     for o in printList:       
         print(o, end=" ")
     print("")
+
 clear()
 gametype = input("Do you want to start with a random word or input a word?(R/I): ")
 if gametype.lower()== "r":
@@ -56,7 +65,7 @@ word = "_ " * len(guessingWord)
 while True:
     drawing.startDraw(word)
     gLetter = input("Enter a letter: ")
-    if len(gLetter)>=2:
+    if len(gLetter) >= 2:
         print("Invalid Input")
         continue
     isLetterInGuessWord(gLetter, guessingWord)
@@ -77,5 +86,7 @@ while True:
     prtList()
     word = ' '.join(printList)
     gameover()
+    drawing.clear()
 # TODO: Print invalid input when more than one letter entered
 # TODO: Integrate drawing (ALMOST DONE?) @Robert's job
+# TODO: Give option to replay screen (@Robert has started in gameOver function)

@@ -41,9 +41,13 @@ def startDraw(word):
   t.right(90)
   t.forward(50)
   t.penup()
-  t.goto(0,-200)
-  t.pencolor("green")
-  t.write(word, move = False, align = 'center', font = ("Verdana", 24, "normal"))
+  
+  global right
+  right = turtle.Turtle(visible = False)
+  right.penup()
+  right.goto(0,-200)
+  right.pencolor("green")
+  right.write(word, move = False, align = 'center', font = ("Verdana", 24, "normal"))
 
   # turtle.Screen().exitonclick()
 
@@ -99,6 +103,9 @@ def drawParts(t, wrong):
     t.penup()
 
     screen.delay(200)
+
+def clear():
+  right.undo()
 
 if __name__ == "__main__":  # @Ewen what does this do?  -- when importing a package the code will run. this is to stop it until the function is called like drawing.start() 
   startDraw("hey")  # temp argument for sake of testing
