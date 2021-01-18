@@ -47,12 +47,13 @@ else:
     guessingWord = input("Enter the word to be guessed\n")
 done = True
 clear()
+
 for j in range(0, len(guessingWord)):
-    print("_ ", end="")
+    print("_ ", end= "")
 print("")
 
 while True:
-    drawing.startDraw(guessingWord)
+    drawing.startDraw(printList)
     gLetter = input("Enter a letter: ")
     if len(gLetter)>=2:
         print("Invalid Input")
