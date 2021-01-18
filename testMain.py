@@ -1,13 +1,8 @@
 import os
 import random
 from random_word import RandWord
-<<<<<<< HEAD
-
-from drawing import drawParts
-=======
 import time
 import drawing
->>>>>>> daaae39ba886087a6e86c7bf4c8a673fd8c1a0ac
 
 
 def clear(): os.system('cls' if os.name == 'nt' else 'clear')
@@ -58,7 +53,8 @@ for j in range(0, len(guessingWord)):
 print("")
 
 while True:
-    drawing.startDraw(printList)
+    word = "_ " * len(guessingWord)
+    drawing.startDraw(word)
     gLetter = input("Enter a letter: ")
     if len(gLetter)>=2:
         print("Invalid Input")
@@ -68,7 +64,7 @@ while True:
         chance -= 1
         print(f"You have {chance} chances left")
         wrongList.append(gLetter)
-        drawing.drawParts(chance, t)
+        drawing.drawParts(drawing.startDraw.t,chance)
     elif gLetter in wrongList:
         print("It is already guessed")
     if chance == 0:
