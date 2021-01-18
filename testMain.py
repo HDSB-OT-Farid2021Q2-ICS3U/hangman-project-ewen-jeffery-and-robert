@@ -1,10 +1,10 @@
 import os
 import random
 from random_word import RandWord
-import time
+
 from drawing import drawParts
 
-start = time.time()
+
 def clear(): os.system('cls' if os.name == 'nt' else 'clear')
 userLetterList = []
 printList = []
