@@ -102,10 +102,12 @@ def drawParts(t, wrong):
     t.forward(50)
     t.penup()
 
-    screen.delay(200)
+def clearRight():
+  right.undo()
 
 def clear():
-  right.undo()
+  t.reset()
+  right.reset()
 
 if __name__ == "__main__":  # @Ewen what does this do?  -- when importing a package the code will run. this is to stop it until the function is called like drawing.start() 
   startDraw("hey")  # temp argument for sake of testing

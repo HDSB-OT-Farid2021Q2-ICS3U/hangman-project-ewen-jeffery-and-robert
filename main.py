@@ -6,10 +6,10 @@ import time
 import drawing
 
 def clear(): os.system('cls' if os.name == 'nt' else 'clear')
-userLetterList = []
+'''userLetterList = []
 printList = []
 wrongList = []
-chance = 6
+killswitch = False'''
 
 def isLetterInGuessWord(guessLetter, guessWord):
     if guessLetter in guessWord:
@@ -37,15 +37,23 @@ def gameover():
         print(f"You guessed the word ({guessingWord}), game is over")
         newgame = input("Would you like to play again? (Y/N): ")
         if newgame.lower() == "y":
-            drawing.t.clear()
             clear()
-            drawing.startDraw("")
+            drawing.clear()
+            Start()
+        else:
+            exit()
+    elif killswitch == True:
+        newgame = input("Would you like to play again? (Y/N): ")
+        if newgame.lower() == "y":
+            clear()
+            drawing.clear()
+            Start()
         else:
             exit()
 
 def prtList():
     for o in printList:       
-        print(o, end=" ")
+        print(o, end = " ")
     print("")
 
 def hint():
@@ -56,21 +64,40 @@ def hint():
         if chance == 1:
             print(f"Here's a hint, try: {hint[random.randrange(len(hint))]}")
 
-clear()
-gametype = input("Do you want to start with a random word or input a word?(R/I): ")
-if gametype.lower()== "r":
-    guessingWord = RandWord()
-else:
-    guessingWord = input("Enter the word to be guessed:\n")
-done = True
-clear()
-hints = input("Would you like hints? (Y/N): ")
-clear()
+def Start():
+    global userLetterList
+    userLetterList = []
+    global printList
+    printList = []
+    global wrongList
+    wrongList = []
+    global killswitch
+    killswitch = False
+    global chance
+    chance = 6
 
-for j in range(0, len(guessingWord)):
-    print("_ ", end= "")
-print("")
-word = "_ " * len(guessingWord)
+    clear()
+
+    gametype = input("Do you want to start with a random word or input a word?(R/I): ")
+    global guessingWord
+    if gametype.lower()== "r":
+        guessingWord = RandWord()
+    else:
+        guessingWord = input("Enter the word to be guessed:\n")
+    global done
+    done = True
+    clear()
+    global hints
+    hints = input("Would you like hints? (Y/N): ")
+    clear()
+
+    for j in range(0, len(guessingWord)):
+        print("_ ", end= "")
+    print("")
+    global word
+    word = "_ " * len(guessingWord)
+
+Start()
 
 while True:
     drawing.startDraw(word)
@@ -91,14 +118,15 @@ while True:
         clear()
         print("Lose")
         print(f"The word is {guessingWord}")
-        exit()
+        killswitch = True
+        gameover()
     makePrtList()
     prtList()
     word = ' '.join(printList)
     gameover()
     hint()
-    drawing.clear()
-    
+    drawing.clearRight()
+
 # TODO: Print invalid input when more than one letter entered
 # TODO: Integrate drawing (ALMOST DONE?) @Robert's job
 # TODO: Give option to replay screen (@Robert has started in gameOver function)
