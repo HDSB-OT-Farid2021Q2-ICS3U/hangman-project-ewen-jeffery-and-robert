@@ -102,6 +102,8 @@ def drawParts(t, wrong):
     t.forward(50)
     t.penup()
 
+    # screen.delay(200)  not needed right now because of input
+
 def clearRight():
   right.undo()
 
