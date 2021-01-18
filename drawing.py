@@ -4,7 +4,7 @@ import turtle
 
 def startDraw(word):
   ''' Function to draw the gallows and start the game '''
-  wrong = 1
+  wrong = 6
 
   t = turtle.Turtle() # must be within function for game.py to work
   
@@ -46,20 +46,20 @@ def startDraw(word):
 
   for i in range(6):  # just to test the body draw
     drawParts(t, wrong)
-    wrong += 1
+    wrong -= 1
 
   turtle.Screen().exitonclick()
 
 def drawParts(t, wrong):
   ''' Draw body parts after each individual wrong answer '''
-  if wrong == 1:  # head
+  if wrong == 5:  # head
     t.setx(-51)
     t.sety(175)
     t.pencolor("blue")
     t.speed(10)
     t.pendown()
     t.circle(25)
-  elif wrong == 2:  # chest
+  elif wrong == 4:  # chest
     t.penup()
     t.setx(-26)
     t.sety(150)
@@ -68,21 +68,21 @@ def drawParts(t, wrong):
   elif wrong == 3:  # left leg
     t.right(45)
     t.forward(50)
-  elif wrong == 4:  # right leg
+  elif wrong == 2:  # right leg
     t.penup()
     t.right(180)
     t.forward(50)
     t.pendown()
     t.right(90)
     t.forward(50)
-  elif wrong == 5:  # left arm
+  elif wrong == 1:  # left arm
     t.penup()
     t.setx(-26)
     t.sety(100)
     t.left(90)
     t.pendown()
     t.forward(50)
-  elif wrong == 6:  # right arm (body complete)
+  elif wrong == 0:  # right arm (body complete)
     t.penup()
     t.setx(-26)
     t.sety(100)

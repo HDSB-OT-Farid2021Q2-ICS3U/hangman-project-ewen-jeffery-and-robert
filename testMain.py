@@ -2,7 +2,7 @@ import os
 import random
 from random_word import RandWord
 import time
-from drawing import drawParts
+import drawing
 
 start = time.time()
 def clear(): os.system('cls' if os.name == 'nt' else 'clear')
@@ -10,6 +10,7 @@ userLetterList = []
 printList = []
 wrongList = []
 chance = 6
+
 def isLetterInGuessWord(guessLetter, guessWord):
     if guessLetter in guessWord:
         if gLetter in userLetterList:
@@ -51,15 +52,17 @@ for j in range(0, len(guessingWord)):
 print("")
 
 while True:
+    drawing.startDraw(guessingWord)
     gLetter = input("Enter a letter: ")
     if len(gLetter)>=2:
         print("Invalid Input")
         continue
     isLetterInGuessWord(gLetter, guessingWord)
     if gLetter not in guessingWord and gLetter not in wrongList:
-        chance = chance - 1
+        chance -= 1
         print(f"You have {chance} chances left")
         wrongList.append(gLetter)
+        drawing.drawParts(chance, t)
     elif gLetter in wrongList:
         print("It is already guessed")
     if chance == 0:
