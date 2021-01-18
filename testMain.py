@@ -10,12 +10,13 @@ userLetterList = []
 printList = []
 wrongList = []
 chance = 6
-def isLetterInGuessWord(guessLetter,guessWord):
+def isLetterInGuessWord(guessLetter, guessWord):
     if guessLetter in guessWord:
         if gLetter in userLetterList:
             print("It is already guessed")
         else:
             userLetterList.append(gLetter)
+
 def makePrtList():
     printList.clear()
     for x in guessingWord:
@@ -23,6 +24,7 @@ def makePrtList():
             printList.append(x)
         else:
             printList.append("_")
+
 def gameover():
     done = True
     for a in guessingWord:
@@ -31,9 +33,10 @@ def gameover():
     if done == True:
         print(f"You guessed the word ({guessingWord}), game is over")
         exit()
+
 def prtList():
     for o in printList:       
-        print(o,end=" ")
+        print(o, end=" ")
     print("")
 clear()
 gametype = input("Do you want to start with a random word or input a word?(R/I)")
@@ -43,15 +46,16 @@ else:
     guessingWord = input("Enter the word to be guessed\n")
 done = True
 clear()
-for j in range(0,len(guessingWord)):
-    print("_ ",end="")
+for j in range(0, len(guessingWord)):
+    print("_ ", end="")
 print("")
+
 while True:
     gLetter = input("Enter a letter: ")
     if len(gLetter)>=2:
         print("Invalid Input")
         continue
-    isLetterInGuessWord(gLetter,guessingWord)
+    isLetterInGuessWord(gLetter, guessingWord)
     if gLetter not in guessingWord and gLetter not in wrongList:
         chance = chance - 1
         print(f"You have {chance} chances left")

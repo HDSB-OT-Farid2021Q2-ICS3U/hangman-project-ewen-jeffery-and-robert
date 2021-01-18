@@ -90,7 +90,7 @@ def drawParts(t, wrong):
     t.pendown()
     t.forward(50)
 
-if __name__ == "__main__":
+if __name__ == "__main__":  # @Ewen what does this do?
   startDraw("Haha")  # temp argument for sake of testing
 
 # TODO: Draw body part whenever a certain condition is met (each time user guesses wrong) DONE
