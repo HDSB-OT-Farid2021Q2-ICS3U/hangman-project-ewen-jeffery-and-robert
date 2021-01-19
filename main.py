@@ -4,6 +4,7 @@ from random_word import RandWord
 import drawing
 import time
 import drawing
+import turtle
 
 def clear(): os.system('cls' if os.name == 'nt' else 'clear')
 '''userLetterList = []
@@ -32,13 +33,11 @@ def gameover():
         if a not in printList:
             done = False
     if done == True:
-        drawing.clear()
-        drawing.startDraw(word)
         print(f"You guessed the word ({guessingWord}), game is over")
         newgame = input("Would you like to play again? (Y/N): ")
         if newgame.lower() == "y":
             clear()
-            drawing.clear()
+            drawing.clear(t)
             Start()
         else:
             exit()
@@ -46,7 +45,7 @@ def gameover():
         newgame = input("Would you like to play again? (Y/N): ")
         if newgame.lower() == "y":
             clear()
-            drawing.clear()
+            drawing.clear(t)
             Start()
         else:
             exit()
@@ -65,29 +64,23 @@ def hint():
             print(f"Here's a hint, try: {hint[random.randrange(len(hint))]}")
 
 def Start():
-    global userLetterList
+    global userLetterList, printList, wrongList, killswitch, chance, guessingWord, done, hints
     userLetterList = []
-    global printList
     printList = []
-    global wrongList
     wrongList = []
-    global killswitch
     killswitch = False
-    global chance
     chance = 6
 
     clear()
 
     gametype = input("Do you want to start with a random word or input a word?(R/I): ")
-    global guessingWord
+
     if gametype.lower()== "r":
         guessingWord = RandWord()
     else:
         guessingWord = input("Enter the word to be guessed:\n")
-    global done
     done = True
     clear()
-    global hints
     hints = input("Would you like hints? (Y/N): ")
     clear()
 
@@ -98,6 +91,8 @@ def Start():
     word = "_ " * len(guessingWord)
 
 Start()
+t = turtle.Turtle()
+t.hideturtle()
 
 while True:
     drawing.startDraw(word)
@@ -110,11 +105,10 @@ while True:
         chance -= 1
         print(f"You have {chance} chances left")
         wrongList.append(gLetter)
-        drawing.drawParts(drawing.t ,chance)
+        drawing.drawParts(chance, t)
     elif gLetter in wrongList:
         print("It is already guessed")
     if chance == 0:
-        drawing.drawParts(drawing.t ,chance)
         clear()
         print("Lose")
         print(f"The word is {guessingWord}")

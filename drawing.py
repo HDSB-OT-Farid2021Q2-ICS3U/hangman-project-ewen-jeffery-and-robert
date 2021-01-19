@@ -5,7 +5,7 @@ import turtle
 def startDraw(word):
   ''' Function to draw the gallows and start the game '''
 
-  global t
+  global right #,t
   t = turtle.Turtle() # must be within function for game.py to work
   
   t.getscreen()._root.attributes('-topmost', 1)
@@ -41,8 +41,8 @@ def startDraw(word):
   t.right(90)
   t.forward(50)
   t.penup()
+  # print(t.position())
   
-  global right
   right = turtle.Turtle(visible = False)
   right.penup()
   right.goto(0,-200)
@@ -51,10 +51,14 @@ def startDraw(word):
 
   # turtle.Screen().exitonclick()
 
-def drawParts(t, wrong):
+def drawParts(wrong, t):
   ''' Draw body parts after each individual wrong answer '''
   screen = t.getscreen()
+  t.hideturtle()
   if wrong == 5:  # head
+    t.speed(100)
+    t.right(90)
+    t.penup()
     t.setx(-51)
     t.sety(175)
     t.pencolor("blue")
@@ -76,20 +80,19 @@ def drawParts(t, wrong):
     t.right(45)
     t.forward(50)
   elif wrong == 2:  # right leg
+    t.penup()
     t.pencolor("blue")
     t.setx(-26)
     t.sety(50)
-    t.setx(-26)
-    t.sety(50)
     t.pendown()
-    t.left(45)
+    t.left(90)
     t.forward(50)
   elif wrong == 1:  # left arm
     t.pencolor("blue")
     t.penup()
     t.setx(-26)
     t.sety(100)
-    t.left(135)
+    t.left(90)
     t.pendown()
     t.forward(50)
   elif wrong == 0:  # right arm (body complete)
@@ -97,22 +100,21 @@ def drawParts(t, wrong):
     t.penup()
     t.setx(-26)
     t.sety(100)
-    t.right(135)
+    t.left(90)
     t.pendown()
     t.forward(50)
     t.penup()
-
     # screen.delay(200)  not needed right now because of input
 
 def clearRight():
   right.undo()
 
-def clear():
+def clear(t):
   t.reset()
   right.reset()
 
-if __name__ == "__main__":  # @Ewen what does this do?  -- when importing a package the code will run. this is to stop it until the function is called like drawing.start() 
-  startDraw("hey")  # temp argument for sake of testing
+#if __name__ == "__main__":  # @Ewen what does this do?  -- when importing a package the code will run. this is to stop it until the function is called like drawing.start() 
+  #startDraw("hey")  # temp argument for sake of testing
   # drawParts()
 # TODO: Draw body part whenever a certain condition is met (each time user guesses wrong) DONE
 # TODO: Draw word in turtle! Also integrate this into main where @Jeffery is working
