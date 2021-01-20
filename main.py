@@ -6,55 +6,56 @@ import time
 import drawing
 import turtle
 
-#Imports and files
-
+# Imports and files
 def clear(): os.system('cls' if os.name == 'nt' else 'clear') # Clear Function
 
 def isLetterInGuessWord(guessLetter, guessWord):
     ''' If the letter use guessed is correct, put it into the right list'''
     if guessLetter in guessWord:
         if guessLetter in userLetterList:
-            print("It is already guessed")
+            print("\033[91mIt is already guessed\033[0m")
         else:
             userLetterList.append(gLetter)
 
 def makePrtList():
     ''' Make the list that displays the word with underscores'''
     printList.clear()
-    for x in guessingWord:
-        if x in userLetterList:
-            printList.append(x)
-        else:
-            printList.append("_")
+    [printList.append(x) if x in userLetterList else printList.append("_") for x in guessingWord]
 
 def gameover():
-    ''' Check if the game is over, if all letters were guessed, ask user to replay or not '''
+    ''' Check if the game is over, if all letters 
+    were guessed, ask user to replay or not '''
     done = True
     for a in guessingWord:
         if a not in printList:
             done = False
     if done == True:
-        print(f"You guessed the word ({guessingWord}), game is over")
-        newgame = input("Would you like to play again? (Y/N): ")
+        drawing.clearWrite()
+        drawing.startDraw(word)
+        print(f"\033[1;32;40mYou guessed the word ({guessingWord}),\
+ game is over\033[0m")
+        newgame = input("\033[91mWould you like to \
+play again? (Y/N): \033[0m")
         if newgame.lower() == "y":
             clear()
-            drawing.clear(t)
+            drawing.reset(t)
             Start()
         else:
             exit()
     elif killswitch == True:
-        newgame = input("Would you like to play again? (Y/N): ")
+        newgame = input("\033[91mWould you like to \
+play again? (Y/N): \033[0m")
         if newgame.lower() == "y":
             clear()
-            drawing.clear(t)
+            drawing.reset(t)
             Start()
         else:
             exit()
 
 def prtList():
     ''' print the Printlist that has been made in the function above '''
-    for o in printList:       
-        print(o, end = " ")
+
+    [print(o, end = " ") for o in printList]
     print("")
 
 def hint():
@@ -64,7 +65,8 @@ def hint():
         hint = [i for i in guessingWord if i not in printList]
         chance = random.randrange(4)
         if chance == 1:
-            print(f"Here's a hint, try: {hint[random.randrange(len(hint))]}")
+            print(f"\033[96mHere's a hint, try: \
+{hint[random.randrange(len(hint))]}\033[0m")
 
 def Start():
     ''' Initialize all variables'''
@@ -77,15 +79,17 @@ def Start():
 
     clear()
 
-    gametype = input("Do you want to start with a random word or input a word?(R/I): ")
+    gametype = input("\033[95mDo you want to start with a random \
+word or input a word?(R/I): \033[0m")
 
     if gametype.lower()== "r":
         guessingWord = RandWord()
     else:
-        guessingWord = input("Enter the word to be guessed:\n")
+        guessingWord = input("\033[94;215;250mEnter\
+ the word to be guessed:\n\033[0m")
     done = True
     clear()
-    hints = input("Would you like hints? (Y/N): ")
+    hints = input("\033[93mWould you like hints? (Y/N): \033[0m")
     clear()
 
     for j in range(0, len(guessingWord)):
@@ -94,6 +98,7 @@ def Start():
     global word
     word = "_ " * len(guessingWord)
 
+# runs the start function, creates turtle for clearing, hides it
 Start()
 t = turtle.Turtle()
 t.hideturtle()
@@ -101,22 +106,21 @@ t.hideturtle()
 
 while True:
     drawing.startDraw(word)
-    gLetter = input("Enter a letter: ")
+    gLetter = input("\033[93mEnter a letter: \033[0m")
     if len(gLetter) >= 2:
-        print("Invalid Input")
-        continue
+        print("\033[91mInvalid Input\033[0m")
     isLetterInGuessWord(gLetter, guessingWord)
     if gLetter not in guessingWord and gLetter not in wrongList:
         chance -= 1
-        print(f"You have {chance} chances left")
+        print(f"\033[91mYou have {chance} chances left\033[0m")
         wrongList.append(gLetter)
         drawing.drawParts(chance, t)
     elif gLetter in wrongList:
-        print("It is already guessed")
+        print("\033[91mIt is already guessed\033[0m")
     if chance == 0:
         clear()
-        print("Lose")
-        print(f"The word is {guessingWord}")
+        print("\033[95mLose\033[0m")
+        print(f"\033[94;215;250mThe word is ({guessingWord})\033[0m")
         killswitch = True
         gameover()
     makePrtList()
@@ -124,8 +128,4 @@ while True:
     word = ' '.join(printList)
     gameover()
     hint()
-    drawing.clearRight()
-
-# TODO: Print invalid input when more than one letter entered(Fixed) @Jeffery
-# TODO: Integrate drawing (ALMOST DONE?) @Robert's job
-# TODO: Give option to replay screen (@Robert has started in gameOver function)
+    drawing.clearWrite()

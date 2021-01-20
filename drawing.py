@@ -3,20 +3,21 @@ import turtle
 # s = turtle.getscreen()
 
 def startDraw(word):
-  ''' Function to draw the gallows and start the game '''
+  ''' Function to draw the gallows and start the game, 
+  as well as print the word using a separate turtle '''
 
-  global right #,t
-  t = turtle.Turtle() # must be within function for game.py to work
+  global write
+  t = turtle.Turtle()
   
   t.getscreen()._root.attributes('-topmost', 1)
   screen = t.getscreen()
-  screen.bgcolor("#fdf800")
+  screen.bgcolor("#faed27")
   t.hideturtle() # hides the arrow that is displayed on screen
   t.speed(50)
   t.penup()
   t.left(90)
   t.forward(250)
-  t.write("HANGMAN", move = False, align = 'center', font = ("Cyberpunk", 24, "normal"))
+  t.write("HANGMAN", move = False, align = 'center', font = ("Helvetica", 24, "normal"))
   t.right(180)
   t.forward(250)
   t.left(90)
@@ -41,19 +42,15 @@ def startDraw(word):
   t.right(90)
   t.forward(50)
   t.penup()
-  # print(t.position())
   
-  right = turtle.Turtle(visible = False)
-  right.penup()
-  right.goto(0,-200)
-  right.pencolor("#5ed7fa")
-  right.write(word, move = False, align = 'center', font = ("Verdana", 24, "normal"))
-
-  # turtle.Screen().exitonclick()
+  write = turtle.Turtle(visible = False)
+  write.penup()
+  write.goto(0,-200)
+  write.pencolor("#0000ff")
+  write.write(word, move = False, align = 'center', font = ("Verdana", 24, "normal"))
 
 def drawParts(wrong, t):
   ''' Draw body parts after each individual wrong answer '''
-  screen = t.getscreen()
   t.hideturtle()
   if wrong == 5:  # head
     t.speed(100)
@@ -104,17 +101,10 @@ def drawParts(wrong, t):
     t.pendown()
     t.forward(50)
     t.penup()
-    # screen.delay(200)  not needed right now because of input
 
-def clearRight():
-  right.undo()
+def clearWrite():
+  write.undo()
 
-def clear(t):
+def reset(t):
   t.reset()
-  right.reset()
-
-#if __name__ == "__main__":  # @Ewen what does this do?  -- when importing a package the code will run. this is to stop it until the function is called like drawing.start() 
-  #startDraw("hey")  # temp argument for sake of testing
-  # drawParts()
-# TODO: Draw body part whenever a certain condition is met (each time user guesses wrong) DONE
-# TODO: Draw word in turtle! Also integrate this into main where @Jeffery is working
+  write.reset()
