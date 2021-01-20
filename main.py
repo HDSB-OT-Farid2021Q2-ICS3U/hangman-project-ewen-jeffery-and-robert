@@ -6,13 +6,12 @@ import time
 import drawing
 import turtle
 
-def clear(): os.system('cls' if os.name == 'nt' else 'clear')
-'''userLetterList = []
-printList = []
-wrongList = []
-killswitch = False'''
+#Imports and files
+
+def clear(): os.system('cls' if os.name == 'nt' else 'clear') # Clear Function
 
 def isLetterInGuessWord(guessLetter, guessWord):
+    ''' If the letter use guessed is correct, put it into the right list'''
     if guessLetter in guessWord:
         if guessLetter in userLetterList:
             print("It is already guessed")
@@ -20,6 +19,7 @@ def isLetterInGuessWord(guessLetter, guessWord):
             userLetterList.append(gLetter)
 
 def makePrtList():
+    ''' Make the list that displays the word with underscores'''
     printList.clear()
     for x in guessingWord:
         if x in userLetterList:
@@ -28,6 +28,7 @@ def makePrtList():
             printList.append("_")
 
 def gameover():
+    ''' Check if the game is over, if all letters were guessed, ask user to replay or not '''
     done = True
     for a in guessingWord:
         if a not in printList:
@@ -51,11 +52,13 @@ def gameover():
             exit()
 
 def prtList():
+    ''' print the Printlist that has been made in the function above '''
     for o in printList:       
         print(o, end = " ")
     print("")
 
 def hint():
+    ''' Give the player hints if the play wants'''
     if hints.lower() == "y":
         hint = []
         hint = [i for i in guessingWord if i not in printList]
@@ -64,6 +67,7 @@ def hint():
             print(f"Here's a hint, try: {hint[random.randrange(len(hint))]}")
 
 def Start():
+    ''' Initialize all variables'''
     global userLetterList, printList, wrongList, killswitch, chance, guessingWord, done, hints
     userLetterList = []
     printList = []
@@ -93,6 +97,7 @@ def Start():
 Start()
 t = turtle.Turtle()
 t.hideturtle()
+t.hideturtle()
 
 while True:
     drawing.startDraw(word)
@@ -121,6 +126,6 @@ while True:
     hint()
     drawing.clearRight()
 
-# TODO: Print invalid input when more than one letter entered
+# TODO: Print invalid input when more than one letter entered(Fixed) @Jeffery
 # TODO: Integrate drawing (ALMOST DONE?) @Robert's job
 # TODO: Give option to replay screen (@Robert has started in gameOver function)
