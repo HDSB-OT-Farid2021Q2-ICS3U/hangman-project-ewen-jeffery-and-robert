@@ -11,7 +11,7 @@ import turtle
 def clear(): os.system('cls' if os.name == 'nt' else 'clear')
 
 def isLetterInGuessWord(guessLetter, guessWord):
-    ''' If the letter use guessed is correct, 
+    ''' If the letter user guessed is correct, 
     put it into the right list'''
     if guessLetter in guessWord:
         if guessLetter in userLetterList:
@@ -20,14 +20,14 @@ def isLetterInGuessWord(guessLetter, guessWord):
             userLetterList.append(gLetter)
 
 def makePrtList():
-    ''' Make the list that displays the word with underscores'''
+    ''' Make the list that displays the word with underscores '''
     printList.clear()
     [printList.append(x) if x in userLetterList \
 else printList.append("_") for x in guessingWord]
 
 def gameover():
     ''' Check if the game is over, if all letters 
-    were guessed, ask user to replay or not '''
+    were guessed or if user lost, ask user to replay or not '''
     done = True
 
     for a in guessingWord:
@@ -65,8 +65,9 @@ def prtList():
 
 def hint():
     ''' Give the player hints if the player wants'''
+    # It makes a list with all letters that haven't
+    # been guessed yet, then randomly chooses one
     if hints.lower() == "y":
-        hint = []
         hint = [i for i in guessingWord if i not in printList]
         chance = random.randrange(4)
         if chance == 1:
@@ -94,6 +95,7 @@ word or input a word? (R/I): \033[0m")
     else:
         guessingWord = input("\033[94;215;250mEnter\
  the word to be guessed:\n\033[0m")
+
     done = True
     clear()
     hints = input("\033[93mWould you like hints? (Y/N): \033[0m")
@@ -112,7 +114,8 @@ t.hideturtle()
 
 # Runs while user is still guessing
 # Redraws word everytime, checks if right/wrong guess
-# Calls functions above at the bottom
+# Calls functions above at the bottom (to add guessed
+# letters to a list, hints, gameover, etc.)
 while True:
     drawing.startDraw(word)
     gLetter = input("\033[93mEnter a letter: \033[0m")

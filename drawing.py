@@ -56,6 +56,7 @@ def drawParts(wrong, t):
   ''' Draw body parts after each 
   individual wrong answer '''
   t.hideturtle()
+
   if wrong == 5:  # head
     t.speed(100)
     t.right(90)

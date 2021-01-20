@@ -34,6 +34,8 @@ Next, the game will ask if you would like to play with hints. Hints are a unique
 
 Afterwards, you're thrown straight in! A separate window will appear, containing a drawing. Don't worry, you can move this window around wherever you deem fit, as long as you don't close it. After that, you will have to keep guessing letters until either all the body parts are drawn or you guess the full word. It will display your spaces for the letters within the word inside the terminal as well as in the turtle drawing. Remember, you cannot input more than 1 character and cannot input the same character more than once. Also, the game is case sensitive, so be aware of that if you're playing in the input mode.
 
+**The program takes a second to process your input and reprint the word in the turtle canvas so please have patience when playing, do not rush through the inputs!**
+
 ![image](https://user-images.githubusercontent.com/74550921/105124449-2a8fba00-5aa8-11eb-9fe7-33c72f6c073b.png)
 
 ![image](https://user-images.githubusercontent.com/74550921/105124516-4bf0a600-5aa8-11eb-8754-2fd91a8c675f.png)
