@@ -1,14 +1,13 @@
 import turtle
-
-# s = turtle.getscreen()
+# imports turtle program so we can draw
 
 def startDraw(word):
   ''' Function to draw the gallows and start the game, 
   as well as print the word using a separate turtle '''
 
-  global write
+  # first turtle
+  # draws gallows and title
   t = turtle.Turtle()
-  
   t.getscreen()._root.attributes('-topmost', 1)
   screen = t.getscreen()
   screen.bgcolor("#faed27")
@@ -17,7 +16,8 @@ def startDraw(word):
   t.penup()
   t.left(90)
   t.forward(250)
-  t.write("HANGMAN", move = False, align = 'center', font = ("Helvetica", 24, "normal"))
+  t.write("HANGMAN", move = False, align = 'center',\
+ font = ("Helvetica", 24, "normal"))
   t.right(180)
   t.forward(250)
   t.left(90)
@@ -43,14 +43,18 @@ def startDraw(word):
   t.forward(50)
   t.penup()
   
+  # Second turtle for guess word only
+  global write
   write = turtle.Turtle(visible = False)
   write.penup()
   write.goto(0,-200)
   write.pencolor("#0000ff")
-  write.write(word, move = False, align = 'center', font = ("Verdana", 24, "normal"))
+  write.write(word, move = False, align = 'center',\
+ font = ("Verdana", 24, "normal"))
 
 def drawParts(wrong, t):
-  ''' Draw body parts after each individual wrong answer '''
+  ''' Draw body parts after each 
+  individual wrong answer '''
   t.hideturtle()
   if wrong == 5:  # head
     t.speed(100)
@@ -103,8 +107,10 @@ def drawParts(wrong, t):
     t.penup()
 
 def clearWrite():
+  ''' Clears text so it can be reprinted '''
   write.undo()
 
 def reset(t):
+  ''' Resets all turtles (whole canvas) '''
   t.reset()
   write.reset()

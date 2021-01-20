@@ -5,12 +5,14 @@ import drawing
 import time
 import drawing
 import turtle
-
 # Imports and files
-def clear(): os.system('cls' if os.name == 'nt' else 'clear') # Clear Function
+
+# Clear Function
+def clear(): os.system('cls' if os.name == 'nt' else 'clear')
 
 def isLetterInGuessWord(guessLetter, guessWord):
-    ''' If the letter use guessed is correct, put it into the right list'''
+    ''' If the letter use guessed is correct, 
+    put it into the right list'''
     if guessLetter in guessWord:
         if guessLetter in userLetterList:
             print("\033[91mIt is already guessed\033[0m")
@@ -20,15 +22,18 @@ def isLetterInGuessWord(guessLetter, guessWord):
 def makePrtList():
     ''' Make the list that displays the word with underscores'''
     printList.clear()
-    [printList.append(x) if x in userLetterList else printList.append("_") for x in guessingWord]
+    [printList.append(x) if x in userLetterList \
+else printList.append("_") for x in guessingWord]
 
 def gameover():
     ''' Check if the game is over, if all letters 
     were guessed, ask user to replay or not '''
     done = True
+
     for a in guessingWord:
         if a not in printList:
             done = False
+
     if done == True:
         drawing.clearWrite()
         drawing.startDraw(word)
@@ -53,13 +58,13 @@ play again? (Y/N): \033[0m")
             exit()
 
 def prtList():
-    ''' print the Printlist that has been made in the function above '''
-
+    ''' print the Printlist that has 
+    been made in the function above '''
     [print(o, end = " ") for o in printList]
     print("")
 
 def hint():
-    ''' Give the player hints if the play wants'''
+    ''' Give the player hints if the player wants'''
     if hints.lower() == "y":
         hint = []
         hint = [i for i in guessingWord if i not in printList]
@@ -69,8 +74,10 @@ def hint():
 {hint[random.randrange(len(hint))]}\033[0m")
 
 def Start():
-    ''' Initialize all variables'''
-    global userLetterList, printList, wrongList, killswitch, chance, guessingWord, done, hints
+    ''' Initialize all variables, checks to see
+    if user plays 1 or 2 player, starts game'''
+    global userLetterList, printList, wrongList, \
+killswitch, chance, guessingWord, done, hints, word
     userLetterList = []
     printList = []
     wrongList = []
@@ -80,7 +87,7 @@ def Start():
     clear()
 
     gametype = input("\033[95mDo you want to start with a random \
-word or input a word?(R/I): \033[0m")
+word or input a word? (R/I): \033[0m")
 
     if gametype.lower()== "r":
         guessingWord = RandWord()
@@ -92,10 +99,9 @@ word or input a word?(R/I): \033[0m")
     hints = input("\033[93mWould you like hints? (Y/N): \033[0m")
     clear()
 
-    for j in range(0, len(guessingWord)):
-        print("_ ", end= "")
+    [print("_ ", end= "") for j in range(0, len(guessingWord))]
     print("")
-    global word
+
     word = "_ " * len(guessingWord)
 
 # runs the start function, creates turtle for clearing, hides it
@@ -104,6 +110,9 @@ t = turtle.Turtle()
 t.hideturtle()
 t.hideturtle()
 
+# Runs while user is still guessing
+# Redraws word everytime, checks if right/wrong guess
+# Calls functions above at the bottom
 while True:
     drawing.startDraw(word)
     gLetter = input("\033[93mEnter a letter: \033[0m")
