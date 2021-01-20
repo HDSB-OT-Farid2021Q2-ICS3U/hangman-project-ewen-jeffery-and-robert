@@ -2,6 +2,7 @@
 # Hangman Assignment
 
 Our take on hangman involves a 1 and 2 player mode, where you can either guess a randomly generated word or have a friend think of one for you. We also have hints, a literal drawing and much, much more!
+![image](https://user-images.githubusercontent.com/74550921/105123159-99b7df00-5aa5-11eb-8ae0-f34ea6a8a66f.png)
 
 ## Installation
 
@@ -10,5 +11,8 @@ Just clone the repo
 ## Usage
 
 ```python
-guess = input('Guess a letter:\n')
+gametype = input("\033[95mDo you want to start with a random word or input a word? (R/I): \033[0m")
 ```
+Our game starts off by asking the user to make a simple choice; to choose which mode to play, 1 player or 2 players. The random word mode allows anyone to play by themselves as the program chooses a random word from a long list. The input word allows one user to input a word to guess and the other to guess it.
+
+Next the game will ask 
