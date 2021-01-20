@@ -10,13 +10,13 @@ def startDraw(word):
   
   t.getscreen()._root.attributes('-topmost', 1)
   screen = t.getscreen()
-  screen.bgcolor("pink")
+  screen.bgcolor("#fdf800")
   t.hideturtle() # hides the arrow that is displayed on screen
   t.speed(50)
   t.penup()
   t.left(90)
   t.forward(250)
-  t.write("HANGMAN", move = False, align = 'center', font = ("Verdana", 24, "normal"))
+  t.write("HANGMAN", move = False, align = 'center', font = ("Cyberpunk", 24, "normal"))
   t.right(180)
   t.forward(250)
   t.left(90)
@@ -46,7 +46,7 @@ def startDraw(word):
   right = turtle.Turtle(visible = False)
   right.penup()
   right.goto(0,-200)
-  right.pencolor("green")
+  right.pencolor("#5ed7fa")
   right.write(word, move = False, align = 'center', font = ("Verdana", 24, "normal"))
 
   # turtle.Screen().exitonclick()
