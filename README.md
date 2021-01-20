@@ -17,12 +17,20 @@ RUN MAIN.PY!
 gametype = input("\033[95mDo you want to start with a random word or input a word? (R/I): \033[0m")
 ```
 Our game starts off by asking the user to make a simple choice; to choose which mode to play, 1 player or 2 players. The random word mode allows anyone to play by themselves as the program chooses a random word from a long list. The input word allows one user to input a word to guess and the other to guess it.
+![image](https://user-images.githubusercontent.com/74550921/105124345-f6b49480-5aa7-11eb-80eb-18ecb00eaae2.png)
 
 Next, the game will ask if you would like to play with hints. Hints are a unique feature in our game: they allow the user to get help if they are struggling. The way it works is that everytime you guess a letter there's a 1/4 chance that the program will tell you one of the remaining letters. This allows for more manageable games when the word is too long.
+![image](https://user-images.githubusercontent.com/74550921/105124385-0d5aeb80-5aa8-11eb-97fb-723fea9eb930.png)
 
 Afterwards, you're thrown straight in! A separate window will appear, containing a drawing. Don't worry, you can move this window around wherever you deem fit, as long as you don't close it. After that, you will have to keep guessing letters until either all the body parts are drawn or you guess the full word. It will display your spaces for the letters within the word inside the terminal as well as in the turtle drawing. Remember, you cannot input more than 1 character and cannot input the same character more than once. Also, the game is case sensitive, so be aware of that if you're playing in the input mode.
 
+![image](https://user-images.githubusercontent.com/74550921/105124449-2a8fba00-5aa8-11eb-9fe7-33c72f6c073b.png)
+
+![image](https://user-images.githubusercontent.com/74550921/105124516-4bf0a600-5aa8-11eb-8754-2fd91a8c675f.png)
+
 Once you finally end the game, you're presented with another input: whether you want to play again or not. If you say yes, the whole game will restart and you will get to play the whole thing once more. If you say no, then the program will exit.
+
+![image](https://user-images.githubusercontent.com/74550921/105124592-6dea2880-5aa8-11eb-982b-8f72ba1d2d86.png)
 
 ## Extra Information
 
