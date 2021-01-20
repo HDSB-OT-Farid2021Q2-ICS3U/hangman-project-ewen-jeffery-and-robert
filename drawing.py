@@ -1,3 +1,8 @@
+# File name: drawing.py
+# Members: Ewen, Jeffery, Robert
+# Description: Everything drawing related is done here
+# Time completed: 2021-01-19 11:00pm
+
 import turtle
 # imports turtle program so we can draw
 

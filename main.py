@@ -1,3 +1,10 @@
+# File name: main.py
+# Members: Ewen, Jeffery, Robert
+# Description: Everything comes together here. All the functions for guessing
+# and displaying the word are here.
+# Time completed: 2021-01-19 11:00pm
+
+
 import os
 import random
 from random_word import RandWord
